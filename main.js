@@ -469,6 +469,8 @@ document.addEventListener(RENDER_EVENT_UI, function () {
   inCompleteBooks.innerHTML = '';
   const completeBooks = document.getElementById('completeBookshelfList');
   completeBooks.innerHTML = '';
+  const spanDescription = document.querySelector('.shelfDesc');
+  spanDescription.innerText = ' Belum selesai dibaca';
 
   for (const book of booksList.reverse()) {
     const bookElement = makeBooksUIElement(book);
