@@ -352,6 +352,8 @@ function showEditBookForm(event, book) {
 function makeBooksUIElement(book, uiSearch = false) {
   const articleBookItem = document.createElement('article');
   articleBookItem.classList.add('book_item');
+  articleBookItem.setAttribute('data-bookid', book.id);
+  articleBookItem.setAttribute('data-testid', 'bookItem');
   articleBookItem.setAttribute('id', 'book-' + book.id);
 
   if (uiSearch) {
@@ -374,7 +376,7 @@ function makeBooksUIElement(book, uiSearch = false) {
     const spanDetailBook = document.createElement('span');
     spanDetailBook.style.textDecoration = 'none';
 
-    const titleAtSpan = document.createElement('b');
+    const titleAtSpan = document.createElement('h3');
     titleAtSpan.innerText = book.title;
     spanDetailBook.append(titleAtSpan);
     spanDetailBook.append(', ' + book.author + ', ' + book.year);
@@ -386,25 +388,31 @@ function makeBooksUIElement(book, uiSearch = false) {
     return anchorBook;
   } else {
     const h3BookTitle = document.createElement('h3');
+    h3BookTitle.setAttribute('data-testid', 'bookItemTitle');
     h3BookTitle.innerText = book.title;
-
+    
     const pAuthor = document.createElement('p');
+    pAuthor.setAttribute('data-testid', 'bookItemAuthor');
     pAuthor.innerText = book.author;
-
+    
     const pYear = document.createElement('p');
+    pYear.setAttribute('data-testid', 'bookItemYear');
     pYear.innerText = book.year;
 
     const divAction = document.createElement('div');
     divAction.classList.add('action');
 
     const buttonGreen = document.createElement('button');
+    buttonGreen.setAttribute('data-testid', 'bookItemIsCompleteButton')
     buttonGreen.classList.add('green');
-
+    
     const buttonYellow = document.createElement('button');
     buttonYellow.classList.add('yellow');
+    buttonYellow.setAttribute('data-testid', 'bookItemEditButton');
     buttonYellow.setAttribute('title', 'Edit buku');
-
+    
     const buttonRed = document.createElement('button');
+    buttonRed.setAttribute('data-testid', 'bookItemDeleteButton')
     buttonRed.classList.add('red');
     buttonRed.setAttribute('title', 'Hapus buku');
 
